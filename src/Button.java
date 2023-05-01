@@ -14,4 +14,5 @@ public class Button extends JButton{
         this.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
+
 }
