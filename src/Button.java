@@ -1,22 +1,17 @@
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.*;
 
-public class Button extends JButton {
-    int buttonNumber = 0;
 
-    String buttonText;
+public class Button extends JButton{
 
-    Button(){
-
+    Button(String text){
+        this.setText(text);
+        this.setBackground(new Color(0x999999));
+        this.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        this.setMaximumSize(new Dimension(250,70));
+        this.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
-    int addButton(){
-        buttonNumber++;
-
-        return buttonNumber;
-    }
-    int removeButton(){
-        buttonNumber--;
-
-        return buttonNumber;
-    }
 }
