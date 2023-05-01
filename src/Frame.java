@@ -15,13 +15,12 @@ public class Frame extends JFrame implements ActionListener {
 
 
     Frame(){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
     JPanel menu = new JPanel();
-        menu.setBackground(new Color (0x555555));
+        menu.setBackground(new Color (0x888888));
         menu.setPreferredSize(new Dimension(300, 300));
         menu.setLayout(new BoxLayout(menu, BoxLayout.Y_AXIS));
         this.add(menu, BorderLayout.WEST);
@@ -32,9 +31,21 @@ public class Frame extends JFrame implements ActionListener {
         DeleteButton = new Button("Delete square");
         menu.add(DeleteButton);
         DeleteButton.addActionListener(this);
+
+
         ColorButton = new Button("Choose color");
         menu.add(ColorButton);
         ColorButton.addActionListener(this);
+
+        JTextArea instruction = new JTextArea("Choose squares to change the color, then choose a color. Only added squares can change color.");
+        instruction.setLineWrap(true);
+        instruction.setWrapStyleWord(true);
+        instruction.setMaximumSize(new Dimension(250,70));
+        instruction.setBackground(new Color(0x888888));
+        Font instructionFont = new Font("Verdana", Font.PLAIN, 15);
+        instruction.setFont(instructionFont);
+        menu.add(instruction);
+
 
     JPanel mainPanel = new JPanel();
         mainPanel.setBackground(new Color(0xa0a0a0));
@@ -59,13 +70,12 @@ public class Frame extends JFrame implements ActionListener {
         if(e.getSource()==AddButton && buttonNumber<8){
             buttonNumber++;
             squares[buttonNumber].setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-            squares[buttonNumber].setBackground(new Color(0xff0000));
         }else if(e.getSource()==DeleteButton&& buttonNumber>-1){
-            squares[buttonNumber].setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+            squares[buttonNumber].setBorder(null);
             squares[buttonNumber].setBackground(new Color(0xffffff));
             buttonNumber--;
         }else if(e.getSource()==ColorButton){
-            JColorChooser colorChooser = new JColorChooser();
+            new JColorChooser();
             Color color = JColorChooser.showDialog(null, "Pick a color", Color.white);
             for (int i=0;i<9;i++) {
                 if(squareButtons[i].isSelected()&&i<=buttonNumber){

@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.EtchedBorder;
 import java.awt.*;
 
 public class Square extends JPanel{
@@ -8,10 +7,6 @@ public class Square extends JPanel{
     Square(Color color){
         this.color=color;
         this.setBackground(this.color);
-        this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
     }
 
-    void changeColor(int square, int color){
-
-    }
 }
